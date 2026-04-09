@@ -150,15 +150,6 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/15 px-4 py-1.5 text-sm font-medium text-white">
-            Top Rated on Fiverr & Upwork
-          </span>
-        </motion.div>
 
         {/* Headline */}
         <motion.h1
@@ -168,8 +159,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           Web Development, AI Development
-          <br />
-          & Mobile Apps That Ship.
+          <br />& Mobile Apps That Ship.
         </motion.h1>
 
         {/* Rotating subtitle */}
@@ -201,8 +191,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          Rahnor is a top-rated development studio for web apps, AI agents, mobile apps, and SaaS platforms.
-          From idea to deployed product — production-grade software, fast.
+          Rahnor is a top-rated development studio for web apps, AI agents,
+          mobile apps, and SaaS platforms. From idea to deployed product —
+          production-grade software, fast.
         </motion.p>
 
         {/* CTAs */}
