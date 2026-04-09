@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { PopupModal } from "react-calendly";
 import Image from "next/image";
+import Link from "next/link";
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ||
@@ -18,12 +20,12 @@ const pageSettings = {
 };
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/", sectionId: "home" },
+  { label: "Services", href: "/services", sectionId: "services" },
+  { label: "Projects", href: "/projects", sectionId: "projects" },
+  { label: "Reviews", href: "/reviews", sectionId: "reviews" },
+  { label: "FAQ", href: "/faq", sectionId: "faq" },
+  { label: "Contact", href: "/contact", sectionId: "contact" },
 ];
 
 export function Navbar() {
@@ -32,6 +34,21 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+      if (!isHome) return;
+
+      const el = document.getElementById(sectionId);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    [isHome],
+  );
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (latest) => {
@@ -69,8 +86,8 @@ export function Navbar() {
         >
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="flex items-center"
               aria-label="Rahnor home"
             >
@@ -82,18 +99,19 @@ export function Navbar() {
                 className="h-10 w-10 object-contain sm:h-12 sm:w-12"
                 priority
               />
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <div className="hidden items-center gap-8 md:flex">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  href={isHome ? `#${link.sectionId}` : link.href}
+                  onClick={(e) => handleNavClick(e, link.sectionId)}
                   className="text-sm text-white transition-colors hover:text-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -130,17 +148,23 @@ export function Navbar() {
             >
               <div className="flex flex-col gap-4">
                 {navLinks.map((link, i) => (
-                  <motion.a
+                  <motion.div
                     key={link.href}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-sm text-white transition-colors hover:text-white"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                   >
-                    {link.label}
-                  </motion.a>
+                    <Link
+                      href={isHome ? `#${link.sectionId}` : link.href}
+                      onClick={(e) => {
+                        setIsOpen(false);
+                        handleNavClick(e, link.sectionId);
+                      }}
+                      className="text-sm text-white transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
                 <motion.button
                   onClick={() => {

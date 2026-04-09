@@ -205,6 +205,10 @@ export function Hero() {
         >
           <a
             href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="group flex items-center gap-2 rounded-full bg-[#8B5CF6] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#7C3AED] hover:shadow-[0_0_24px_rgba(139,92,246,0.35)]"
           >
             Send Your Requirements
@@ -215,6 +219,10 @@ export function Hero() {
           </a>
           <a
             href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="flex items-center gap-2 rounded-full border border-[#334155] px-6 py-3 text-sm font-medium text-white transition-all hover:border-white/20 hover:text-white"
           >
             View Our Work
