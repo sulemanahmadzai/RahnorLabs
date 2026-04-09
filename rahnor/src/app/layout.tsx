@@ -110,9 +110,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: "/assets/Rahnor%20Mark.svg",
-    shortcut: "/assets/Rahnor%20Mark.svg",
-    apple: "/assets/Rahnor%20Mark.svg",
+    icon: [
+      { url: "/icon", type: "image/png", sizes: "48x48" },
+      { url: "/assets/Rahnor%20Mark.svg", type: "image/svg+xml" },
+    ],
+    apple: { url: "/apple-icon", type: "image/png", sizes: "180x180" },
   },
   robots: {
     index: true,
