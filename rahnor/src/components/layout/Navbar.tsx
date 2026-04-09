@@ -1,13 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-} from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { PopupModal } from "react-calendly";
+import Image from "next/image";
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ||
@@ -25,6 +22,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -73,9 +71,17 @@ export function Navbar() {
             {/* Logo */}
             <a
               href="#home"
-              className="font-[var(--font-heading)] text-xl font-bold tracking-tight text-white"
+              className="flex items-center"
+              aria-label="Rahnor home"
             >
-              Rahnor
+              <Image
+                src="/assets/Rahnor%20Mark.svg"
+                alt="Rahnor"
+                width={72}
+                height={72}
+                className="h-10 w-10 object-contain sm:h-12 sm:w-12"
+                priority
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -119,7 +125,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="mx-auto mt-2 max-w-4xl overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111827]/95 px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:hidden"
+              className="mx-auto mt-2 max-w-4xl overflow-hidden rounded-2xl border border-white/8 bg-[#111827]/95 px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.6)] md:hidden"
               style={{ backdropFilter: "blur(12px)" }}
             >
               <div className="flex flex-col gap-4">

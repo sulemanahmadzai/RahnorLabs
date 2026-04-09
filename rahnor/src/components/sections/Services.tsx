@@ -89,13 +89,13 @@ export function Services() {
           viewport={{ once: true }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#8B5CF6]">
-            Services
+            Our Services
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            What We Build
+            Web Development, AI Development & Mobile App Services
           </h2>
           <p className="mt-3 text-balance text-white/75">
-            From rapid prototypes to production SaaS — pick your category.
+            From rapid MVPs to production SaaS platforms — hire expert developers for any project.
           </p>
         </motion.div>
 

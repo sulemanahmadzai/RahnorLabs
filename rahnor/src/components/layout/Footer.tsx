@@ -1,7 +1,10 @@
+import Image from "next/image";
+
 const footerLinks = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -62,19 +65,41 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#334155] bg-[#0A0A1A]">
+    <footer
+      className="border-t border-[#334155] bg-[#0A0A1A]"
+      role="contentinfo"
+      itemScope
+      itemType="https://schema.org/WPFooter"
+    >
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <span className="text-xl font-bold tracking-tight">Rahnor</span>
+            <Image
+              src="/assets/Rahnor%20Mark.svg"
+              alt="Rahnor — Web, AI & Mobile App Development Company"
+              width={84}
+              height={84}
+              className="-mt-1 h-14 w-14 object-contain"
+            />
             <p className="mt-2 text-sm text-white">
-              Building digital products that ship.
+              Web development, AI development & mobile app development studio.
+              Production-grade software, shipped fast.
             </p>
+            <address className="mt-3 text-xs not-italic text-[#94A3B8]">
+              <span>Islamabad, Pakistan</span>
+              <br />
+              <a
+                href="mailto:suleman.atworkalways@gmail.com"
+                className="transition-colors hover:text-white"
+              >
+                suleman.atworkalways@gmail.com
+              </a>
+            </address>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap gap-6">
+          <nav aria-label="Footer navigation" className="flex flex-wrap gap-6">
             {footerLinks.map((link) => (
               <a
                 key={link.href}
@@ -84,7 +109,7 @@ export function Footer() {
                 {link.label}
               </a>
             ))}
-          </div>
+          </nav>
 
           {/* Socials */}
           <div className="flex gap-4 md:justify-end">
@@ -95,7 +120,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white transition-colors hover:text-white"
-                aria-label={link.label}
+                aria-label={`Rahnor on ${link.label}`}
               >
                 <link.icon />
               </a>
@@ -105,7 +130,16 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#334155] pt-8 text-xs text-white sm:flex-row">
-          <span>&copy; 2025 Rahnor. All rights reserved.</span>
+          <span className="flex items-center gap-2">
+            <Image
+              src="/assets/Rahnor%20Mark.svg"
+              alt="Rahnor"
+              width={36}
+              height={36}
+              className="h-7 w-7 object-contain"
+            />
+            <span>&copy; {new Date().getFullYear()} Rahnor. All rights reserved.</span>
+          </span>
           <span>{"Built in Islamabad, Pakistan \u{1F1F5}\u{1F1F0}"}</span>
         </div>
       </div>

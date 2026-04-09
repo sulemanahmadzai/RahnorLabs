@@ -167,9 +167,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          We Build Digital Products
+          Web Development, AI Development
           <br />
-          That Actually Ship.
+          & Mobile Apps That Ship.
         </motion.h1>
 
         {/* Rotating subtitle */}
@@ -201,8 +201,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          Rahnor delivers production-grade software, fast. From idea to deployed
-          product — no fluff, no delays.
+          Rahnor is a top-rated development studio for web apps, AI agents, mobile apps, and SaaS platforms.
+          From idea to deployed product — production-grade software, fast.
         </motion.p>
 
         {/* CTAs */}

@@ -5,7 +5,9 @@ import { Projects } from "@/components/sections/Projects";
 import { Reviews } from "@/components/sections/Reviews";
 import { WorkMap } from "@/components/sections/WorkMap";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
+import { SeoContent } from "@/components/seo/SeoContent";
 
 export default function Home() {
   return (
@@ -17,7 +19,9 @@ export default function Home() {
       <Reviews />
       <WorkMap />
       <WhyChooseUs />
+      <FAQ />
       <Contact />
+      <SeoContent />
     </>
   );
 }
